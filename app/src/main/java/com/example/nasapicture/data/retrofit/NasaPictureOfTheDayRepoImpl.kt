@@ -6,20 +6,9 @@ import com.example.nasapicture.domain.repos.NasaPictureOfTheDayRepo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.IllegalStateException
 
-private const val BASE_URL = "https://api.nasa.gov/"
-
-class NasaPictureOfTheDayRepoImpl : NasaPictureOfTheDayRepo {
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private var api: NasaPictureOfTheDayApi = retrofit.create(NasaPictureOfTheDayApi::class.java)
+class NasaPictureOfTheDayRepoImpl(private val api: NasaPictureOfTheDayApi) :
+    NasaPictureOfTheDayRepo {
 
     override fun getPictureOfTheDay(
         onSuccess: (NasaPictureEntity) -> Unit,
