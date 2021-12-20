@@ -2,9 +2,9 @@ package com.example.nasapicture.data
 
 import android.app.Application
 import android.content.Context
-import com.example.nasapicture.data.retrofit.NasaPictureOfTheDayApi
-import com.example.nasapicture.data.retrofit.NasaPictureOfTheDayRepoImpl
-import com.example.nasapicture.domain.repos.NasaPictureOfTheDayRepo
+import com.example.nasapicture.data.retrofit.NasaPodApi
+import com.example.nasapicture.data.retrofit.RetrofitNasaPodRepoImpl
+import com.example.nasapicture.domain.repos.NasaPodRepo
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,9 +17,9 @@ class App : Application() {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private var api: NasaPictureOfTheDayApi = retrofit.create(NasaPictureOfTheDayApi::class.java)
+    private var api: NasaPodApi = retrofit.create(NasaPodApi::class.java)
 
-    val nasaPictureOfTheDayRepo: NasaPictureOfTheDayRepo by lazy { NasaPictureOfTheDayRepoImpl(api) }
+    val nasaPodRepo: NasaPodRepo by lazy { RetrofitNasaPodRepoImpl(api) }
 }
 
 val Context.app: App
