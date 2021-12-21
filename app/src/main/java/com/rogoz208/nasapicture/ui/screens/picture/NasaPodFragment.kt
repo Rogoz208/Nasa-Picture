@@ -29,8 +29,7 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
         viewModel.nasaPodLiveData.observe(this) { nasaPictureEntity ->
             Glide.with(this).load(nasaPictureEntity.url).into(binding.nasaPictureImageView)
             binding.podDescriptionBottomSheet.podHeaderTextView.text = nasaPictureEntity.title
-            binding.podDescriptionBottomSheet.podDescriptionTextView.text =
-                nasaPictureEntity.description
+            binding.podDescriptionBottomSheet.podDescriptionTextView.text = nasaPictureEntity.description
             binding.podDescriptionBottomSheet.podDateTextView.text = nasaPictureEntity.date
             val copyrightString = "Copyright: ${nasaPictureEntity.copyright}"
             binding.podDescriptionBottomSheet.podCopyrightTextView.text = copyrightString
@@ -38,8 +37,7 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
 
         viewModel.isPodLoadedLiveData.observe(this) { isPodLoaded ->
             binding.podLoadingProgressBar.isVisible = !isPodLoaded
-            binding.podDescriptionBottomSheet.podDescriptionLoadingProgressBar.isVisible =
-                !isPodLoaded
+            binding.podDescriptionBottomSheet.podDescriptionLoadingProgressBar.isVisible = !isPodLoaded
         }
 
         viewModel.getData()

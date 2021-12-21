@@ -5,7 +5,8 @@ import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
 
 class NasaPodContract {
 
-    interface ViewModel{
+    interface ViewModel {
+
         val nasaPodLiveData: LiveData<NasaPodEntity>
         val isPodLoadedLiveData: LiveData<Boolean>
 
