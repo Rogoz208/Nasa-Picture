@@ -1,8 +1,8 @@
-package com.example.nasapicture.ui.screens.picture
+package com.rogoz208.nasapicture.ui.screens.picture
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.nasapicture.domain.repos.NasaPodRepo
+import com.rogoz208.nasapicture.domain.repos.NasaPodRepo
 
 class NasaPodViewModelFactory(private val nasaPodRepo: NasaPodRepo):
     ViewModelProvider.NewInstanceFactory() {

@@ -1,4 +1,4 @@
-package com.example.nasapicture.domain.entities
+package com.rogoz208.nasapicture.domain.entities
 
 import com.google.gson.annotations.SerializedName
 

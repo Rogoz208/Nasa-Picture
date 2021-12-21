@@ -1,7 +1,7 @@
-package com.example.nasapicture.ui.screens.picture
+package com.rogoz208.nasapicture.ui.screens.picture
 
 import androidx.lifecycle.LiveData
-import com.example.nasapicture.domain.entities.NasaPodEntity
+import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
 
 class NasaPodContract {
 

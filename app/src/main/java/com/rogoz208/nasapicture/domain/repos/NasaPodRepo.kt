@@ -1,6 +1,6 @@
-package com.example.nasapicture.domain.repos
+package com.rogoz208.nasapicture.domain.repos
 
-import com.example.nasapicture.domain.entities.NasaPodEntity
+import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
 
 interface NasaPodRepo {
 

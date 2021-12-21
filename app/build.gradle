@@ -9,7 +9,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.nasapicture"
+        applicationId "com.rogoz208.nasapicture"
         minSdk 28
         targetSdk 31
         versionCode 1

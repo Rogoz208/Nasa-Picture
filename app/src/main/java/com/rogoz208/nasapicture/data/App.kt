@@ -1,10 +1,10 @@
-package com.example.nasapicture.data
+package com.rogoz208.nasapicture.data
 
 import android.app.Application
 import android.content.Context
-import com.example.nasapicture.data.retrofit.NasaPodApi
-import com.example.nasapicture.data.retrofit.RetrofitNasaPodRepoImpl
-import com.example.nasapicture.domain.repos.NasaPodRepo
+import com.rogoz208.nasapicture.data.retrofit.NasaPodApi
+import com.rogoz208.nasapicture.data.retrofit.RetrofitNasaPodRepoImpl
+import com.rogoz208.nasapicture.domain.repos.NasaPodRepo
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

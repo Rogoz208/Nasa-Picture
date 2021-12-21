@@ -1,6 +1,6 @@
-package com.example.nasapicture.data.retrofit
+package com.rogoz208.nasapicture.data.retrofit
 
-import com.example.nasapicture.domain.entities.NasaPodEntity
+import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

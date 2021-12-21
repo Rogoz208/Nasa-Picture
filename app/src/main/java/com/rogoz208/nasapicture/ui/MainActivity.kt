@@ -1,11 +1,11 @@
-package com.example.nasapicture.ui
+package com.rogoz208.nasapicture.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.nasapicture.ui.screens.picture.NasaPodFragment
-import com.example.nasapicture.R
-import com.example.nasapicture.databinding.ActivityMainBinding
+import com.rogoz208.nasapicture.R
+import com.rogoz208.nasapicture.databinding.ActivityMainBinding
+import com.rogoz208.nasapicture.ui.screens.picture.NasaPodFragment
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
