@@ -2,6 +2,7 @@ package com.rogoz208.nasapicture.ui.screens.picture
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -33,6 +34,12 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
             binding.podDescriptionBottomSheet.podDateTextView.text = nasaPictureEntity.date
             val copyrightString = "Copyright: ${nasaPictureEntity.copyright}"
             binding.podDescriptionBottomSheet.podCopyrightTextView.text = copyrightString
+        }
+
+        viewModel.isPodLoadedLiveData.observe(this) { isPodLoaded ->
+            binding.podLoadingProgressBar.isVisible = !isPodLoaded
+            binding.podDescriptionBottomSheet.podDescriptionLoadingProgressBar.isVisible =
+                !isPodLoaded
         }
 
         viewModel.getData()
