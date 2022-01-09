@@ -39,7 +39,7 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
     }
 
     private fun displayData(nasaPodEntity: NasaPodEntity) {
-        Glide.with(this).load(nasaPodEntity.url).into(binding.nasaPictureImageView)
+        Glide.with(this).load(nasaPodEntity.url).into(binding.nasaPodImageView)
         binding.podDescriptionBottomSheet.podHeaderTextView.text = nasaPodEntity.title
         binding.podDescriptionBottomSheet.podDescriptionTextView.text = nasaPodEntity.description
         binding.podDescriptionBottomSheet.podDateTextView.text = nasaPodEntity.date
