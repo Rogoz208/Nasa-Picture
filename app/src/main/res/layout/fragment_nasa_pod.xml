@@ -11,9 +11,10 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/nasa_picture_image_view"
+            android:id="@+id/nasa_pod_image_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/nasa_pod_image_view_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +40,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nasa_picture_image_view">
+            app:layout_constraintTop_toBottomOf="@id/nasa_pod_image_view">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/wiki_search_input_edit_text"

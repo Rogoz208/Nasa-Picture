@@ -3,5 +3,6 @@
 
     <string name="search_wiki">Search Wiki</string>
     <string name="search_in_wilipedia">Search in wikipedia</string>
+    <string name="nasa_pod_image_view_description">Nasa picture of the day</string>
 
 </resources>
