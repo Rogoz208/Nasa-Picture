@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.data.app
 import com.rogoz208.nasapicture.databinding.FragmentNasaPodBinding
+import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
 
 class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
 
@@ -26,20 +27,28 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
     }
 
     private fun initViewModel() {
-        viewModel.nasaPodLiveData.observe(this) { nasaPictureEntity ->
-            Glide.with(this).load(nasaPictureEntity.url).into(binding.nasaPictureImageView)
-            binding.podDescriptionBottomSheet.podHeaderTextView.text = nasaPictureEntity.title
-            binding.podDescriptionBottomSheet.podDescriptionTextView.text = nasaPictureEntity.description
-            binding.podDescriptionBottomSheet.podDateTextView.text = nasaPictureEntity.date
-            val copyrightString = "Copyright: ${nasaPictureEntity.copyright}"
-            binding.podDescriptionBottomSheet.podCopyrightTextView.text = copyrightString
+        viewModel.nasaPodLiveData.observe(this) {
+            displayData(it)
         }
 
-        viewModel.isPodLoadedLiveData.observe(this) { isPodLoaded ->
-            binding.podLoadingProgressBar.isVisible = !isPodLoaded
-            binding.podDescriptionBottomSheet.podDescriptionLoadingProgressBar.isVisible = !isPodLoaded
+        viewModel.isPodLoadedLiveData.observe(this) {
+            showHideProgressBar(it)
         }
 
         viewModel.getData()
+    }
+
+    private fun displayData(nasaPodEntity: NasaPodEntity) {
+        Glide.with(this).load(nasaPodEntity.url).into(binding.nasaPictureImageView)
+        binding.podDescriptionBottomSheet.podHeaderTextView.text = nasaPodEntity.title
+        binding.podDescriptionBottomSheet.podDescriptionTextView.text = nasaPodEntity.description
+        binding.podDescriptionBottomSheet.podDateTextView.text = nasaPodEntity.date
+        val copyrightString = "Copyright: ${nasaPodEntity.copyright}"
+        binding.podDescriptionBottomSheet.podCopyrightTextView.text = copyrightString
+    }
+
+    private fun showHideProgressBar(isPodLoaded: Boolean) {
+        binding.podLoadingProgressBar.isVisible = !isPodLoaded
+        binding.podDescriptionBottomSheet.podDescriptionLoadingProgressBar.isVisible = !isPodLoaded
     }
 }
