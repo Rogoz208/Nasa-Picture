@@ -2,8 +2,8 @@ package com.rogoz208.nasapicture.ui.screens.picture
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AppCompatDelegate
+import android.view.*
+import androidx.appcompat.app.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,6 +13,7 @@ import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.data.app
 import com.rogoz208.nasapicture.databinding.FragmentNasaPodBinding
 import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
+import com.rogoz208.nasapicture.ui.MainActivity
 
 class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
 
@@ -26,7 +27,6 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
         super.onViewCreated(view, savedInstanceState)
 
         initViewModel()
-        setupListeners()
     }
 
     private fun initViewModel() {
@@ -53,17 +53,5 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
     private fun showHideProgressBar(isPodLoaded: Boolean) {
         binding.podLoadingProgressBar.isVisible = !isPodLoaded
         binding.podDescriptionBottomSheet.podDescriptionLoadingProgressBar.isVisible = !isPodLoaded
-    }
-
-    private fun setupListeners() {
-        binding.nasaPodImageView.setOnClickListener {
-            val isNightTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-            when (isNightTheme) {
-                Configuration.UI_MODE_NIGHT_YES ->
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                Configuration.UI_MODE_NIGHT_NO ->
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
-        }
     }
 }
