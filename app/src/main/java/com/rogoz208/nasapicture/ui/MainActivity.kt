@@ -26,12 +26,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         initBottomNavigation()
         openDefaultScreen(savedInstanceState)
         loadThemeState()
+
+        supportActionBar?.hide()
     }
 
     private fun initBottomNavigation() {
         binding.bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
             supportFragmentManager.beginTransaction()
-                .replace(binding.fragmentContainer.id, fragmentsMap[item.itemId]!!)
+                .replace(
+                    binding.fragmentContainer.id,
+                    fragmentsMap[item.itemId] ?: throw IllegalStateException("fragment is null")
+                )
                 .commit()
             true
         }

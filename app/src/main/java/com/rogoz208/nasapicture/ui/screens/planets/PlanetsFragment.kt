@@ -1,13 +1,12 @@
 package com.rogoz208.nasapicture.ui.screens.planets
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.databinding.FragmentPlanetsBinding
+import com.rogoz208.nasapicture.ui.screens.planets.adapter.*
 
 class PlanetsFragment : Fragment(R.layout.fragment_planets) {
 
@@ -15,6 +14,10 @@ class PlanetsFragment : Fragment(R.layout.fragment_planets) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = PlanetsStatePagerAdapter(this)
+        adapter.items = PlanetPageType.values().toList()
+        binding.planetsViewPager.adapter = adapter
 
     }
 }
