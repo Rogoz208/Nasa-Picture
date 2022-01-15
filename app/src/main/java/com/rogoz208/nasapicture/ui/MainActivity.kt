@@ -6,6 +6,7 @@ import androidx.appcompat.app.*
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.databinding.ActivityMainBinding
+import com.rogoz208.nasapicture.ui.screens.planets.PlanetsFragment
 import com.rogoz208.nasapicture.ui.screens.pod.NasaPodFragment
 import com.rogoz208.nasapicture.ui.screens.settings.*
 
@@ -13,32 +14,33 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val binding by viewBinding(ActivityMainBinding::bind)
 
+    private val fragmentsMap = mapOf(
+        R.id.bottom_pod to NasaPodFragment(),
+        R.id.bottom_planets to PlanetsFragment(),
+        R.id.bottom_settings to SettingsFragment()
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(binding.fragmentContainer.id, NasaPodFragment())
-                .commit()
-        }
+        initBottomNavigation()
+        openDefaultScreen(savedInstanceState)
         loadThemeState()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menu?.add(0, 0, 0, getString(R.string.settings))
-        return super.onCreateOptionsMenu(menu)
+    private fun initBottomNavigation() {
+        binding.bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
+            supportFragmentManager.beginTransaction()
+                .replace(binding.fragmentContainer.id, fragmentsMap[item.itemId]!!)
+                .commit()
+            true
+        }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 0) {
-//            val intent = Intent(this@MainActivity, SettingsActivity::class.java)
-//            startActivity(intent)
-            supportFragmentManager.beginTransaction()
-                .replace(binding.fragmentContainer.id, SettingsFragment())
-                .addToBackStack("")
-                .commit()
+    private fun openDefaultScreen(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            binding.bottomNavigationView.selectedItemId = R.id.bottom_pod
         }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun loadThemeState() {
