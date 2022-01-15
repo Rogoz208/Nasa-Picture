@@ -2,7 +2,7 @@ package com.rogoz208.nasapicture.ui.screens.planets.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.rogoz208.nasapicture.ui.screens.planets.PlanetPageFragment
+import com.rogoz208.nasapicture.ui.screens.planets.page.PlanetPageFragment
 
 class PlanetsStatePagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 

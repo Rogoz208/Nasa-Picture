@@ -18,6 +18,7 @@ class PlanetsFragment : Fragment(R.layout.fragment_planets) {
         val adapter = PlanetsStatePagerAdapter(this)
         adapter.items = PlanetPageType.values().toList()
         binding.planetsViewPager.adapter = adapter
+        binding.planetsViewPager.isSaveEnabled = false
 
     }
 }

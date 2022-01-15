@@ -1,7 +1,7 @@
 package com.rogoz208.nasapicture.data.retrofit
 
 import com.rogoz208.nasapicture.BuildConfig
-import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
+import com.rogoz208.nasapicture.domain.entities.*
 import com.rogoz208.nasapicture.domain.repos.NasaPodRepo
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,6 +35,28 @@ class RetrofitNasaPodRepoImpl(private val api: NasaPodApi) : NasaPodRepo {
             }
 
             override fun onFailure(call: Call<NasaPodEntity>, t: Throwable) {
+                onError(t)
+            }
+        })
+    }
+
+    override fun getPictureOfTheMarsSync(): MarsEntity {
+        return api.getMars(apiKey).execute().body() ?: throw IllegalStateException("null result")
+    }
+
+    override fun getPictureOfTheMarsAsync(
+        onSuccess: (MarsEntity) -> Unit, onError: (Throwable) -> Unit
+    ) {
+        api.getMars(apiKey).enqueue(object : Callback<MarsEntity> {
+            override fun onResponse(call: Call<MarsEntity>, response: Response<MarsEntity>) {
+                if (response.isSuccessful) {
+                    onSuccess(response.body() ?: throw IllegalStateException("null result"))
+                } else {
+                    onError(Throwable("unknown error"))
+                }
+            }
+
+            override fun onFailure(call: Call<MarsEntity>, t: Throwable) {
                 onError(t)
             }
         })

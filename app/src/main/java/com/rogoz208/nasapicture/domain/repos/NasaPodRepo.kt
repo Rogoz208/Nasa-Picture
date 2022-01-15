@@ -1,6 +1,6 @@
 package com.rogoz208.nasapicture.domain.repos
 
-import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
+import com.rogoz208.nasapicture.domain.entities.*
 
 interface NasaPodRepo {
 
@@ -8,6 +8,13 @@ interface NasaPodRepo {
 
     fun getPictureOfTheDayAsync(
         onSuccess: (NasaPodEntity) -> Unit,
+        onError: (Throwable) -> Unit
+    )
+
+    fun getPictureOfTheMarsSync(): MarsEntity
+
+    fun getPictureOfTheMarsAsync(
+        onSuccess: (MarsEntity) -> Unit,
         onError: (Throwable) -> Unit
     )
 }

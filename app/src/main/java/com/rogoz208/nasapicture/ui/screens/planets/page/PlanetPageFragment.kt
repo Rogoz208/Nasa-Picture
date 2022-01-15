@@ -1,11 +1,14 @@
-package com.rogoz208.nasapicture.ui.screens.planets
+package com.rogoz208.nasapicture.ui.screens.planets.page
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.*
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import com.rogoz208.nasapicture.R
+import com.rogoz208.nasapicture.data.app
 import com.rogoz208.nasapicture.databinding.FragmentPlanetPageBinding
+import com.rogoz208.nasapicture.domain.entities.*
 import com.rogoz208.nasapicture.ui.screens.planets.adapter.PlanetPageType
 
 private const val PAGE_TYPE_KEY = "PAGE_TYPE_KEY"
@@ -14,6 +17,10 @@ class PlanetPageFragment : Fragment(R.layout.fragment_planet_page) {
 
     private val binding by viewBinding(FragmentPlanetPageBinding::bind)
 
+    private val viewModel: PlanetPageContract.ViewModel by viewModels {
+        PlanetPageViewModelFactory(requireContext().app.nasaPodRepo)
+    }
+
     private val planetPageType by lazy {
         requireArguments().getSerializable(PAGE_TYPE_KEY) as PlanetPageType
     }
@@ -21,7 +28,21 @@ class PlanetPageFragment : Fragment(R.layout.fragment_planet_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.planetTextView.text = planetPageType.name
+        initViewModel()
+    }
+
+    private fun initViewModel(){
+        viewModel.planetPictureUrlLiveData.observe(this){
+            displayData(it)
+        }
+        viewModel.descriptionLiveData.observe(this){
+            binding.planetTextView.text = "$planetPageType\n$it"
+        }
+        viewModel.getData(planetPageType)
+    }
+
+    private fun displayData(imgSrc: String) {
+        Glide.with(this).load(imgSrc).into(binding.planetImageView)
     }
 
     companion object {
