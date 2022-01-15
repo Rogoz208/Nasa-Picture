@@ -6,7 +6,7 @@ import androidx.appcompat.app.*
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.databinding.ActivityMainBinding
-import com.rogoz208.nasapicture.ui.screens.picture.NasaPodFragment
+import com.rogoz208.nasapicture.ui.screens.pod.NasaPodFragment
 import com.rogoz208.nasapicture.ui.screens.settings.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {

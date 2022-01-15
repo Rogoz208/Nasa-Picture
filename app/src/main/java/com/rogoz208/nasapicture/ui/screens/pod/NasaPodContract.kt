@@ -1,4 +1,4 @@
-package com.rogoz208.nasapicture.ui.screens.picture
+package com.rogoz208.nasapicture.ui.screens.pod
 
 import androidx.lifecycle.LiveData
 import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
