@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NasaPicture">
         <activity
-            android:name=".ui.screens.settings.SettingsActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

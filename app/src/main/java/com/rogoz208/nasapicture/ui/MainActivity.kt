@@ -1,6 +1,5 @@
 package com.rogoz208.nasapicture.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.*
@@ -32,8 +31,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 0) {
-            val intent = Intent(this@MainActivity, SettingsActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+//            startActivity(intent)
+            supportFragmentManager.beginTransaction()
+                .replace(binding.fragmentContainer.id, SettingsFragment())
+                .addToBackStack("")
+                .commit()
         }
         return super.onOptionsItemSelected(item)
     }
