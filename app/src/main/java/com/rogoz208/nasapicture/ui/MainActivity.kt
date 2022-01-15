@@ -19,13 +19,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(binding.fragmentContainer.id, NasaPodFragment()).commit()
+                .replace(binding.fragmentContainer.id, NasaPodFragment())
+                .commit()
         }
         loadThemeState()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menu?.add(0, 0, 0, "Settings")
+        menu?.add(0, 0, 0, getString(R.string.settings))
         return super.onCreateOptionsMenu(menu)
     }
 

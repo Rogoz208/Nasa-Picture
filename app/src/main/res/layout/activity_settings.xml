@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Select theme"
+        android:text="@string/select_theme"
         android:textSize="18sp" />
 
     <RadioGroup
@@ -23,19 +22,19 @@
             android:id="@+id/dark_theme_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dark theme" />
+            android:text="@string/dark_theme" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/light_theme_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Light theme" />
+            android:text="@string/light_theme" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/system_theme_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="System theme" />
+            android:text="@string/system_theme" />
     </RadioGroup>
 
 </LinearLayout>

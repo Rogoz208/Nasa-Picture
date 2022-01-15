@@ -32,7 +32,7 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
     private fun setupActionBar() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            title = "Settings"
+            title = getString(R.string.settings)
         }
     }
 

@@ -1,19 +1,15 @@
 package com.rogoz208.nasapicture.ui.screens.picture
 
-import android.content.res.Configuration
 import android.os.Bundle
-import android.view.*
-import androidx.appcompat.app.*
+import android.view.View
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.*
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.data.app
 import com.rogoz208.nasapicture.databinding.FragmentNasaPodBinding
 import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
-import com.rogoz208.nasapicture.ui.MainActivity
 
 class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
 
