@@ -1,4 +1,4 @@
-package com.rogoz208.nasapicture.ui.screens.picture
+package com.rogoz208.nasapicture.ui.screens.pod
 
 import android.os.Bundle
 import android.view.View
