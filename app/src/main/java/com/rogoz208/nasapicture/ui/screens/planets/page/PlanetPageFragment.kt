@@ -31,18 +31,14 @@ class PlanetPageFragment : Fragment(R.layout.fragment_planet_page) {
         initViewModel()
     }
 
-    private fun initViewModel(){
-        viewModel.planetPictureUrlLiveData.observe(this){
-            displayData(it)
+    private fun initViewModel() {
+        viewModel.planetPictureUrlLiveData.observe(this) { imgSrc ->
+            Glide.with(this).load(imgSrc).into(binding.planetImageView)
         }
-        viewModel.descriptionLiveData.observe(this){
+        viewModel.descriptionLiveData.observe(this) {
             binding.planetTextView.text = "$planetPageType\n$it"
         }
         viewModel.getData(planetPageType)
-    }
-
-    private fun displayData(imgSrc: String) {
-        Glide.with(this).load(imgSrc).into(binding.planetImageView)
     }
 
     companion object {

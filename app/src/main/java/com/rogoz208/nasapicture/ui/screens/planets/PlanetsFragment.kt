@@ -15,10 +15,13 @@ class PlanetsFragment : Fragment(R.layout.fragment_planets) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViewPager()
+    }
+
+    private fun initViewPager() {
         val adapter = PlanetsStatePagerAdapter(this)
         adapter.items = PlanetPageType.values().toList()
         binding.planetsViewPager.adapter = adapter
         binding.planetsViewPager.isSaveEnabled = false
-
     }
 }
