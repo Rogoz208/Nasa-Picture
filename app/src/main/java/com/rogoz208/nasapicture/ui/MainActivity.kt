@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_CLOSE
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.databinding.ActivityMainBinding
+import com.rogoz208.nasapicture.ui.screens.notes.NotesFragment
 import com.rogoz208.nasapicture.ui.screens.planets.PlanetsFragment
 import com.rogoz208.nasapicture.ui.screens.pod.NasaPodFragment
 import com.rogoz208.nasapicture.ui.screens.settings.*
@@ -18,7 +19,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val fragmentsMap = mapOf(
         R.id.bottom_pod to NasaPodFragment(),
         R.id.bottom_planets to PlanetsFragment(),
-        R.id.bottom_settings to SettingsFragment()
+        R.id.bottom_settings to SettingsFragment(),
+        R.id.bottom_notes to NotesFragment()
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
