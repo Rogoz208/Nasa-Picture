@@ -7,6 +7,7 @@ import com.rogoz208.nasapicture.domain.repos.NotesRepo
 class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel(), NotesContract {
 
     override val notesListLiveData = MutableLiveData<List<NoteEntity>>()
+    override val toastMessageLiveData = MutableLiveData<String>()
 
     init {
         updateNotes()
@@ -19,7 +20,7 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel(), NotesContr
     }
 
     override fun onNoteClick(noteEntity: NoteEntity) {
-        TODO("Not yet implemented")
+        toastMessageLiveData.postValue("${noteEntity.title} is clicked")
     }
 
     override fun onNoteMoved(from: Int, to: Int) {

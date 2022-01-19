@@ -6,6 +6,7 @@ import com.rogoz208.nasapicture.domain.entities.NoteEntity
 interface NotesContract {
 
     val notesListLiveData: LiveData<List<NoteEntity>>
+    val toastMessageLiveData: LiveData<String>
 
     fun onNoteClick(noteEntity: NoteEntity)
     fun onNoteMoved(from: Int, to: Int)

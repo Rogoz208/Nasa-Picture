@@ -2,6 +2,7 @@ package com.rogoz208.nasapicture.ui.screens.notes
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.*
 import androidx.recyclerview.widget.*
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -46,6 +47,9 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
     private fun initViewModel() {
         viewModel.notesListLiveData.observe(viewLifecycleOwner) { notes ->
             fillRecyclerView(notes)
+        }
+        viewModel.toastMessageLiveData.observe(viewLifecycleOwner) { message ->
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
         viewModel.updateNotes()
     }
