@@ -10,6 +10,10 @@ interface NotesRepo {
 
     fun deleteNote(uId: String)
 
+    fun deleteNote(position: Int)
+
     fun updateNote(uId: String, note: NoteEntity)
+
+    fun swapNotes(from: Int, to: Int)
 
 }

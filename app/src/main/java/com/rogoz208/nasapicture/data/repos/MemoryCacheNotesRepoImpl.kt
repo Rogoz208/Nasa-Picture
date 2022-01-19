@@ -26,8 +26,16 @@ class MemoryCacheNotesRepoImpl : NotesRepo {
         }
     }
 
+    override fun deleteNote(position: Int) {
+        cache.removeAt(position)
+    }
+
     override fun updateNote(uId: String, note: NoteEntity) {
         deleteNote(uId)
         cache.add(note.copy(uId = uId))
+    }
+
+    override fun swapNotes(from: Int, to: Int) {
+        Collections.swap(cache, from, to)
     }
 }
