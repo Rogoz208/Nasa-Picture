@@ -3,6 +3,7 @@ package com.rogoz208.nasapicture.ui
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.*
+import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_CLOSE
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.databinding.ActivityMainBinding
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun initBottomNavigation() {
         binding.bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
             supportFragmentManager.beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                 .replace(
                     binding.fragmentContainer.id,
                     fragmentsMap[item.itemId] ?: throw IllegalStateException("fragment is null")
