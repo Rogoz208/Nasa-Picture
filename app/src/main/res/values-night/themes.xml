@@ -13,5 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimarySurface</item>
         <item name="android:windowLightStatusBar">false</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:windowSplashscreenContent">@drawable/background_splash_gradient</item>
     </style>
 </resources>
