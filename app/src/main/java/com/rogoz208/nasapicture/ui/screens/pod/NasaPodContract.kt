@@ -9,6 +9,8 @@ class NasaPodContract {
 
         val nasaPodLiveData: LiveData<NasaPodEntity>
         val isPodLoadedLiveData: LiveData<Boolean>
+        val spannableTextLiveData: LiveData<CharSequence>
+        val messageTextLiveData: LiveData<String>
 
         fun getData()
     }
