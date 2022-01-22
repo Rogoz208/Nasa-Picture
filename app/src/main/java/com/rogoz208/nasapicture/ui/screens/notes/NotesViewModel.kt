@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import com.rogoz208.nasapicture.domain.entities.NoteEntity
 import com.rogoz208.nasapicture.domain.repos.NotesRepo
 
-class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel(), NotesContract {
+class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel(), NotesContract.ViewModel {
 
     override val notesListLiveData = MutableLiveData<List<NoteEntity>>()
     override val toastMessageLiveData = MutableLiveData<String>()

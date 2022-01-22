@@ -16,7 +16,7 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
 
     private val binding by viewBinding(FragmentNotesBinding::bind)
 
-    private val viewModel: NotesViewModel by viewModels {
+    private val viewModel: NotesContract.ViewModel by viewModels {
         NotesViewModelFactory(requireContext().app.notesRepo)
     }
 

@@ -5,11 +5,13 @@ import com.rogoz208.nasapicture.domain.entities.NoteEntity
 
 interface NotesContract {
 
-    val notesListLiveData: LiveData<List<NoteEntity>>
-    val toastMessageLiveData: LiveData<String>
+    interface ViewModel{
+        val notesListLiveData: LiveData<List<NoteEntity>>
+        val toastMessageLiveData: LiveData<String>
 
-    fun onNoteClick(noteEntity: NoteEntity)
-    fun onNoteMoved(from: Int, to: Int)
-    fun onNoteSwiped(position: Int)
-    fun updateNotes()
+        fun onNoteClick(noteEntity: NoteEntity)
+        fun onNoteMoved(from: Int, to: Int)
+        fun onNoteSwiped(position: Int)
+        fun updateNotes()
+    }
 }
