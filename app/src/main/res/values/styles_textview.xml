@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextStyle" parent="Base.TextAppearance.AppCompat" />
+
+    <!--    Bold    -->
+    <style name="TextStyle.Bold">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Regular    -->
+    <style name="TextStyle.Regular">
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+</resources>

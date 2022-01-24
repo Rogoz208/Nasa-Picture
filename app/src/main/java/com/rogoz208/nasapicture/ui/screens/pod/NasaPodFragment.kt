@@ -1,7 +1,10 @@
 package com.rogoz208.nasapicture.ui.screens.pod
 
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.*
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -34,6 +37,16 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
             showHideProgressBar(it)
         }
 
+        viewModel.spannableTextLiveData.observe(this) { text ->
+            binding.podDescriptionBottomSheet.podCopyrightTextView.text = text
+            binding.podDescriptionBottomSheet.podCopyrightTextView.movementMethod =
+                LinkMovementMethod.getInstance()
+        }
+
+        viewModel.messageTextLiveData.observe(this) { message ->
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        }
+
         viewModel.getData()
     }
 
@@ -42,8 +55,6 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
         binding.podDescriptionBottomSheet.podHeaderTextView.text = nasaPodEntity.title
         binding.podDescriptionBottomSheet.podDescriptionTextView.text = nasaPodEntity.description
         binding.podDescriptionBottomSheet.podDateTextView.text = nasaPodEntity.date
-        val copyrightString = "Copyright: ${nasaPodEntity.copyright}"
-        binding.podDescriptionBottomSheet.podCopyrightTextView.text = copyrightString
     }
 
     private fun showHideProgressBar(isPodLoaded: Boolean) {
