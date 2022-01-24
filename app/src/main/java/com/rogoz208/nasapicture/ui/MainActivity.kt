@@ -7,6 +7,9 @@ import androidx.appcompat.app.*
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.nasapicture.R
 import com.rogoz208.nasapicture.databinding.ActivityMainBinding
+import com.rogoz208.nasapicture.databinding.ActivityMainBinding.inflate
+import com.rogoz208.nasapicture.databinding.ActivitySettingsBinding.inflate
+import com.rogoz208.nasapicture.databinding.BottomSheetPodDescriptionBinding.inflate
 import com.rogoz208.nasapicture.ui.screens.picture.NasaPodFragment
 import com.rogoz208.nasapicture.ui.screens.settings.*
 
@@ -26,12 +29,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menu?.add(0, 0, 0, getString(R.string.settings))
-        return super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.main_dots_menu, menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 0) {
+        if (item.itemId == R.id.settings_menu_item) {
             val intent = Intent(this@MainActivity, SettingsActivity::class.java)
             startActivity(intent)
         }
