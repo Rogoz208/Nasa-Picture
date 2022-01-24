@@ -16,7 +16,7 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
     private val binding by viewBinding(FragmentNasaPodBinding::bind)
 
     private val viewModel: NasaPodContract.ViewModel by viewModels {
-        NasaPodViewModelFactory(requireContext().app.nasaPodRepo)
+        NasaPodViewModelFactory(requireContext().app.nasaRepository)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,11 +26,11 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
     }
 
     private fun initViewModel() {
-        viewModel.nasaPodLiveData.observe(this) {
+        viewModel.nasaPodLiveData.observe(viewLifecycleOwner) {
             displayData(it)
         }
 
-        viewModel.isPodLoadedLiveData.observe(this) {
+        viewModel.isPodLoadedLiveData.observe(viewLifecycleOwner) {
             showHideProgressBar(it)
         }
 
@@ -39,9 +39,11 @@ class NasaPodFragment : Fragment(R.layout.fragment_nasa_pod) {
 
     private fun displayData(nasaPodEntity: NasaPodEntity) {
         Glide.with(this).load(nasaPodEntity.url).into(binding.nasaPodImageView)
+
         binding.podDescriptionBottomSheet.podHeaderTextView.text = nasaPodEntity.title
         binding.podDescriptionBottomSheet.podDescriptionTextView.text = nasaPodEntity.description
         binding.podDescriptionBottomSheet.podDateTextView.text = nasaPodEntity.date
+
         val copyrightString = "Copyright: ${nasaPodEntity.copyright}"
         binding.podDescriptionBottomSheet.podCopyrightTextView.text = copyrightString
     }

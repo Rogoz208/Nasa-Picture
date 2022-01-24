@@ -2,12 +2,12 @@ package com.rogoz208.nasapicture.data.retrofit
 
 import com.rogoz208.nasapicture.BuildConfig
 import com.rogoz208.nasapicture.domain.entities.NasaPodEntity
-import com.rogoz208.nasapicture.domain.repos.NasaPodRepo
+import com.rogoz208.nasapicture.domain.repos.NasaRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RetrofitNasaPodRepoImpl(private val api: NasaPodApi) : NasaPodRepo {
+class RetrofitNasaRepositoryImpl(private val api: NasaPodApi) : NasaRepository {
 
     private val apiKey by lazy {
         if (BuildConfig.NASA_API_KEY.isNotBlank()) {
@@ -15,10 +15,6 @@ class RetrofitNasaPodRepoImpl(private val api: NasaPodApi) : NasaPodRepo {
         } else {
             throw IllegalStateException("you need API key")
         }
-    }
-
-    override fun getPictureOfTheDaySync(): NasaPodEntity {
-        return api.getPictureOfTheDay(apiKey).execute().body() ?: throw IllegalStateException("null result")
     }
 
     override fun getPictureOfTheDayAsync(
