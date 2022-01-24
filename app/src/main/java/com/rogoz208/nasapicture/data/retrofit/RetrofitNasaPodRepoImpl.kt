@@ -25,7 +25,7 @@ class RetrofitNasaPodRepoImpl(private val api: NasaPodApi) : NasaPodRepo {
         onSuccess: (NasaPodEntity) -> Unit,
         onError: (Throwable) -> Unit,
     ) {
-        api.getPictureOfTheDay(apiKey).enqueue(object : Callback<NasaPodEntity> {
+        val callback = object : Callback<NasaPodEntity> {
             override fun onResponse(call: Call<NasaPodEntity>, response: Response<NasaPodEntity>) {
                 if (response.isSuccessful) {
                     onSuccess(response.body() ?: throw IllegalStateException("null result"))
@@ -37,17 +37,23 @@ class RetrofitNasaPodRepoImpl(private val api: NasaPodApi) : NasaPodRepo {
             override fun onFailure(call: Call<NasaPodEntity>, t: Throwable) {
                 onError(t)
             }
-        })
+        }
+
+        api.getPictureOfTheDay(apiKey).enqueue(callback)
     }
 
     override fun getPictureOfTheMarsSync(): MarsEntity {
         return api.getMars(apiKey).execute().body() ?: throw IllegalStateException("null result")
     }
 
+
+
+
     override fun getPictureOfTheMarsAsync(
         onSuccess: (MarsEntity) -> Unit, onError: (Throwable) -> Unit
     ) {
-        api.getMars(apiKey).enqueue(object : Callback<MarsEntity> {
+
+        val callback = object : Callback<MarsEntity> {
             override fun onResponse(call: Call<MarsEntity>, response: Response<MarsEntity>) {
                 if (response.isSuccessful) {
                     onSuccess(response.body() ?: throw IllegalStateException("null result"))
@@ -59,6 +65,8 @@ class RetrofitNasaPodRepoImpl(private val api: NasaPodApi) : NasaPodRepo {
             override fun onFailure(call: Call<MarsEntity>, t: Throwable) {
                 onError(t)
             }
-        })
+        }
+
+        api.getMars(apiKey).enqueue(callback)
     }
 }

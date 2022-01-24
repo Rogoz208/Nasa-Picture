@@ -29,7 +29,7 @@ class PlanetPageViewModel(private val nasaPodRepo: NasaPodRepo) : ViewModel(), P
     private fun getMarsPicture(){
         nasaPodRepo.getPictureOfTheMarsAsync(onSuccess = { marsEntities ->
             planetPictureUrlLiveData.postValue(marsEntities.photos.first().imgSrc)
-            descriptionLiveData.postValue(marsEntities.photos.first().camera.fullName)
+            descriptionLiveData.postValue(marsEntities.photos.first().cameraEntity.fullName)
         }, onError = { error ->
             Log.d("@@@", error.message.toString())
         })
