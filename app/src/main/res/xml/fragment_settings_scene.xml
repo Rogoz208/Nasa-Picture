@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@+id/after_click"
+        app:constraintSetStart="@+id/before_click"
+        app:duration="3000">
+
+        <OnClick app:targetId="@+id/swap_button" />
+
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="20"
+                app:keyPositionType="parentRelative"
+                app:motionTarget="@id/label_text_view"
+                app:percentX="0.3" />
+        </KeyFrameSet>
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="40"
+                app:keyPositionType="parentRelative"
+                app:motionTarget="@id/label_text_view"
+                app:percentX="0.6"
+                app:percentY="0.3"/>
+        </KeyFrameSet>
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="60"
+                app:keyPositionType="parentRelative"
+                app:motionTarget="@id/label_text_view"
+                app:percentX="0.8"
+                app:percentY="0.6"/>
+        </KeyFrameSet>
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="80"
+                app:keyPositionType="parentRelative"
+                app:motionTarget="@id/label_text_view"
+                app:percentX="0.1"
+                app:percentY="0.5"/>
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/before_click">
+        <Constraint android:id="@+id/select_theme_radio_group">
+            <Layout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_text_view" />
+        </Constraint>
+
+        <Constraint android:id="@+id/label_text_view">
+            <Layout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintBottom_toTopOf="@id/select_theme_radio_group"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/after_click">
+        <Constraint android:id="@+id/select_theme_radio_group">
+            <Layout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/label_text_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </Constraint>
+
+        <Constraint android:id="@+id/label_text_view">
+            <Layout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/select_theme_radio_group" />
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>
